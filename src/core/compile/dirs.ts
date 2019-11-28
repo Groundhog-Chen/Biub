@@ -34,7 +34,7 @@ const directives = {
         }
     },
     _getVMVal: (vm: Biub, exp: any) => {      
-        var val = vm.proxy;
+        let val = vm.proxy;
         exp = exp.split('.');
         exp.forEach((k: string) => {            
             val = val[k];

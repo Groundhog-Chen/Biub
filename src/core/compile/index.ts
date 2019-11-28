@@ -22,13 +22,11 @@ export default class Compile {
         }
         return fragment;
     }
-
     init() {
         this.compileElement(this.$fragment);
     }
-
     compileElement(el: DocumentFragment | Node) {
-        var childNodes = el.childNodes;
+        const childNodes = el.childNodes;
         childNodes.forEach((node: any) => {
             const text = node.textContent;
             const reg = /\{\{(.*)\}\}/;
@@ -42,7 +40,6 @@ export default class Compile {
             }
         });
     }
-
     compile(node: any) {
         const nodeAttrs = node.attributes;
         for (const attr of nodeAttrs) {
@@ -62,7 +59,6 @@ export default class Compile {
             }
         }
     }
-
     compileText(node: Element, exp: string) {
         directives.text(node, this.$vm, exp);
     }
@@ -70,20 +66,16 @@ export default class Compile {
     isDirective(attr: string) {
         return attr.indexOf('v-') == 0;
     }
-
     // 事件指令
     isEventDirective(dir: string) {
         return dir.indexOf('on') === 0;
     }
-
     // 文档节点
     isElementNode(node: any) {
         return node.nodeType == 1;
     }
-
     // 文本节点
     isTextNode(node: any) {
         return node.nodeType == 3;
     }
-
 };

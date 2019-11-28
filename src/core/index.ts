@@ -4,6 +4,12 @@ import Watcher from './subscribe/watcher';
 import Dep from "./subscribe/dep";
 
 export default class Biub {
+    $options: options;
+    proxy: Biub;
+    deps: {
+        [name: string]: Dep
+    }
+    [propName: string]: any;
     constructor(options: options) {
         this.$options = options;
         this._initSet();
@@ -11,12 +17,6 @@ export default class Biub {
         this.proxy = this.defineProxy();
         this.$compile = new Compile(options.el, this);
     }
-    $options: options;
-    proxy: Biub;
-    deps: {
-        [name: string]: Dep
-    }
-    [propName: string]: any;
     $watch(key: string, cb: Function) {
         new Watcher(this, key, cb);
     }
@@ -28,15 +28,17 @@ export default class Biub {
                     if (!deps[key]) {
                         deps[key] = new Dep();
                     } else {
-                        deps[key].depend();
+                        if (Dep.target) {
+                            deps[key].depend();
+                        } 
                     }
                     return target[key];
                 }
                 return Reflect.get(target, key);
             },
             set: function (target, key: any, value, receiver) {
-                const keys = key.split('.');                
-                if(keys.length > 1) {
+                const keys = key.split('.');
+                if (keys.length > 1) {
                     key = keys[0];
                 }
                 const dep = deps[key];

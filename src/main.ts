@@ -1,6 +1,6 @@
 import Biub from './core/index';
-var index = 10000;
-var vm = new Biub({
+let index = 10000;
+const vm = new Biub({
     el: '#app',
     data: {
         salary: 10000,
