@@ -117,7 +117,7 @@ class Dep {
             Dep.target.addDep(this);
         }
     }
-    // 通知 Watcher 回调
+    // 通知 Watcher 触发回调
     notify(vm: Biub) {
         this.subs.forEach((watcher: Watcher) => {
             watcher.update(vm);
@@ -128,6 +128,8 @@ class Dep {
 ```
 
 ## 4、实现 Watcher 触发 Compile 中绑定的订阅回调
+
+`Watcher` 实例化时候往 `Biub` 的 `deps` 对应 `Dep` 里添加自己，这样 `proxy` 触发 `set` 时候就能根据 `deps` 对应 `Dep` 找到订阅者触发自身的 `update()` 并触发  `Compile` 中绑定的回调更新视图了
 
 ```JavaScript
 
@@ -187,6 +189,10 @@ export default class Watcher {
     }
 };
 ```
+### 感谢
+
++ [DMQ](https://github.com/DMQ/mvvm) 大神提供 `compile` `subscribe` 两个模块，我把大佬的es5改成了TS并简化了模板编译指令，由好几个简化成了两个，哈哈哈！
+
 ## 最终效果
 
 ```html
@@ -231,11 +237,9 @@ vm.$watch('salary', function () {
 
 
 
-## Emmm~
+## 总结
 
-+ 喜欢就帮忙点个赞啦！
+EMMM~
 
-## 感谢大神提供 `compile` `subscribe` 两个模块
 
-+ [DMQ](https://github.com/DMQ/mvvm)
 
