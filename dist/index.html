@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <title>Groundhog</title>    
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="name">
+        <input type="text" v-model="obj.kk.childName">
+        <p>名字：{{ name }}</p>
+        <p>Salary：{{salary}}</p>
+        <p>深对象：{{obj.kk.childName}}</p>
+        <button v-on:click="click">Add Salary</button>
+    </div>
+    <script src="./bundle.js"></script>
+</body>
+</html>

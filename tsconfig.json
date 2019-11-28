@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"module": "esnext",
+		"target": "es6",
+		"lib": [
+			"esnext",
+			"dom"
+		],
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"declaration": true,
+		"declarationDir": "./src/types/",
+		"typeRoots": [
+			"./src/types"
+		]
+	},
+	"include": ["src/**/*"],
+	"locale": "zh-CN"
+}
