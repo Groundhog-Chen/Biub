@@ -30,13 +30,13 @@ export default class Biub {
                     } else {
                         if (Dep.target) {
                             deps[key].depend();
-                        } 
+                        }
                     }
                     return target[key];
                 }
                 return Reflect.get(target, key);
             },
-            set: function (target, key: any, value, receiver) {
+            set: function (target, key: any, value) {
                 const keys = key.split('.');
                 if (keys.length > 1) {
                     key = keys[0];
@@ -57,6 +57,6 @@ export default class Biub {
         });
     }
     _initComputed() {
-        // this.$options.computed && this.$options.computed.call(this.proxy);         
+        // this.$options.computed && this.$options.computed.call(this.proxy);
     }
 };

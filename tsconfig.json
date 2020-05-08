@@ -11,9 +11,9 @@
 		"preserveConstEnums": true,
 		"sourceMap": true,
 		"declaration": true,
-		"declarationDir": "./src/types/",
+		"declarationDir": "./src/types",
 		"typeRoots": [
-			"./src/types"
+			"node_modules/@types"
 		]
 	},
 	"include": ["src/**/*"],
