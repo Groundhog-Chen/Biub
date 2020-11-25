@@ -1,11 +1,11 @@
 import Biub from "../index";
 import directives from './dirs';
 export default class Compile {
-    $vm: Biub;
+    $biub: Biub;
     $el: Element;
     $fragment: DocumentFragment;
     constructor(el: string, vm: Biub) {
-        this.$vm = vm;
+        this.$biub = vm;
         this.$el = document.querySelector(el);
         if (this.$el) {
             this.$fragment = this.node2Fragment(this.$el);
@@ -50,17 +50,17 @@ export default class Compile {
                 const dir = attrName.substring(2);
                 if (this.isEventDirective(dir)) {                    
                     // 事件指令
-                    directives.eventHandler(node, this.$vm, exp, dir);
+                    directives.eventHandler(node, this.$biub, exp, dir);
                 } else {
                     // model指令
-                    directives.model(node, this.$vm, exp);
+                    directives.model(node, this.$biub, exp);
                 }
                 node.removeAttribute(attrName);
             }
         }
     }
     compileText(node: Element, exp: string) {
-        directives.text(node, this.$vm, exp);
+        directives.text(node, this.$biub, exp);
     }
     // 普通指令
     isDirective(attr: string) {

@@ -1,5 +1,7 @@
 export default {
     text(node: any, value: string): void {
+        console.log(node)
+        console.log(value)
         const regex = /\{\{(.*)\}\}/;
         if (regex.exec(node.textContent)) {
             const str = (regex.exec(node.textContent))[0];

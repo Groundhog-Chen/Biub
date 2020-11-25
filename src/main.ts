@@ -1,6 +1,6 @@
 import Biub from './core/index';
 let index = 10000;
-const vm = new Biub({
+const mvvm = new Biub({
     el: '#app',
     data: {
         salary: 10000,
@@ -17,6 +17,6 @@ const vm = new Biub({
         }
     }
 });
-vm.$watch('salary', function () {
+mvvm.$watch('salary', function () {
     console.log(this.salary);
 });

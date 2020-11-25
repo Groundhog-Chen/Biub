@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <title>Groundhog</title>    
+    <title>Biub</title>    
 </head>
 
 <body>
     <div id="app">
-        <input type="text" v-model="name">
-        <input type="text" v-model="obj.kk.childName">
-        <p>名字：{{ name }}</p>
-        <p>Salary：{{salary}}</p>
-        <p>深对象：{{obj.kk.childName}}</p>
+        <div class="row">name：<input type="text" v-model="name">{{ name }}</div>
+        <div class="row">Salary：<input type="text" v-model="salary">{{salary}}</div>
+        <div class="row">深对象：<input type="text" v-model="obj.kk.childName">{{obj.kk.childName}}</div>
+        <div class="row">深对象：{{obj.kk.childName}}</div>
         <button v-on:click="click">Add Salary</button>
     </div>
     <script src="./bundle.js"></script>

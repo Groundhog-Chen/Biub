@@ -23,9 +23,9 @@ export default class Dep {
             this.subs.splice(index, 1);
         }
     }
-    notify(vm: Biub) {
+    notify(biub: Biub) {
         this.subs.forEach((watcher: Watcher) => {
-            watcher.update(vm);
+            watcher.update(biub);
         });
     }
 };

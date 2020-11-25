@@ -6,11 +6,11 @@ export default class Watcher {
     expOrFn: string | Function;
     depIds: { [key: number]: Dep };
     value: string | number | symbol;
-    vm: Biub;
+    $biub: Biub;
     getter: any;
-    constructor(vm: Biub, expOrFn: string | Function, updater: Function) {
+    constructor(biub: Biub, expOrFn: string | Function, updater: Function) {
         this.updater = updater;
-        this.vm = vm;
+        this.$biub = biub;
         this.expOrFn = expOrFn;
         this.depIds = {};
         if (typeof expOrFn === 'function') {
@@ -27,7 +27,7 @@ export default class Watcher {
         const oldVal = this.value;
         if (val !== oldVal) {
             this.value = val;
-            this.updater.call(this.vm, val, oldVal);
+            this.updater.call(this.$biub, val, oldVal);
         }
     }
     addDep(dep: Dep) {
@@ -38,7 +38,7 @@ export default class Watcher {
     }
     get() {
         Dep.target = this;
-        const value = this.getter.call(this.vm, this.vm);
+        const value = this.getter.call(this.$biub, this.$biub);
         Dep.target = null;
         return value;
     }
